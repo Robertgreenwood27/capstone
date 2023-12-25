@@ -1,5 +1,5 @@
-// Deck/index.js
 import React, { useEffect, useState } from 'react';
+import { readDeck, deleteDeck, deleteCard } from '../../utils/api/index';
 import { useParams, useHistory } from 'react-router-dom';
 import DeckView from './DeckView';
 import Breadcrumb from '../../components/Breadcrumb';
@@ -13,38 +13,21 @@ function Deck() {
   useEffect(() => {
     async function loadDeck() {
       try {
-        const response = await fetch(`http://localhost:8080/decks/${deckId}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const deckData = await response.json();
+        const deckData = await readDeck(deckId);
         setDeck(deckData);
+        setCards(deckData.cards || []);
       } catch (error) {
         console.error('Failed to fetch deck:', error);
       }
     }
 
-    async function loadCards() {
-      try {
-        const response = await fetch(`http://localhost:8080/cards?deckId=${deckId}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const cardsData = await response.json();
-        setCards(cardsData);
-      } catch (error) {
-        console.error('Failed to fetch cards:', error);
-      }
-    }
-
     loadDeck();
-    loadCards();
-  }, [deckId]);
+  }, [deckId]);  // Dependency array ensures this effect runs when deckId changes
 
   const handleDelete = async () => {
     if (window.confirm("Delete this deck?\n\nYou will not be able to recover it.")) {
       try {
-        await fetch(`http://localhost:8080/decks/${deckId}`, { method: 'DELETE' });
+        await deleteDeck(deckId);
         history.push('/'); // Navigate back to the home screen
       } catch (error) {
         console.error('Failed to delete deck:', error);
@@ -59,9 +42,7 @@ function Deck() {
   const handleDeleteCard = async (cardId) => {
     if (window.confirm("Are you sure you want to delete this card?\n\nThis action cannot be undone.")) {
       try {
-        await fetch(`http://localhost:8080/cards/${cardId}`, { method: 'DELETE' });
-        
-        // Update the cards state to reflect the deletion
+        await deleteCard(cardId);
         setCards(cards.filter(card => card.id !== cardId));
       } catch (error) {
         console.error('Failed to delete card:', error);
