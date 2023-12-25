@@ -1,0 +1,111 @@
+body {
+    background-color: #07335D;
+    border-color: blue;
+    color: whitesmoke;
+}
+
+
+
+.dark {
+    background-color: #201919;
+}
+
+.breadcrumb {
+    background-color: #201919;
+}
+
+.breadcrumb a {
+    color: #d1ecf1; /* A light color for contrast */
+}
+
+.breadcrumb a:hover {
+    color: #aed9ea; /* A slightly darker shade for hover state */
+}
+
+.breadcrumb-item.active {
+    color: #adb5bd; /* A muted color for the active/non-clickable item */
+}
+
+.card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  .no-hover:hover {
+    transform: none;
+}
+
+  
+  .btn {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  
+  .btn-primary {
+    background: linear-gradient(145deg, #41295a, #2f0743);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(145deg, #2f0743, #41295a);
+  }
+  
+  
+  .btn-danger {
+    background: linear-gradient(145deg, #e52d27, #b31217);
+  }
+  
+  .btn-danger:hover {
+    background: linear-gradient(145deg, #b31217, #e52d27);
+  }
+
+  .btn-secondary {
+    background: linear-gradient(145deg, #1f4037, #99f2c8);
+  }
+  
+  .btn-secondary:hover {
+    background: linear-gradient(145deg, #99f2c8, #1f4037);
+  }
+
+  .btn-info {
+    background: linear-gradient(145deg, #2179b5, #6dd5ed);
+}
+
+.btn-info:hover {
+    background: linear-gradient(145deg, #6dd5ed, #2179b5);
+}
+
+  
+
+  
+  .oi {
+    filter: drop-shadow(0 0 1px #00fffc);
+  }
+  
+  .card-title, .card-text {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .btn:focus {
+    animation: pulse 1s infinite;
+  }
+  
+  
