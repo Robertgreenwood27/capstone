@@ -7,7 +7,7 @@ import Breadcrumb from '../../components/Breadcrumb';
 function Deck() {
   const { deckId } = useParams();
   const history = useHistory();
-  const [deck, setDeck] = useState(null);
+  const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -22,13 +22,13 @@ function Deck() {
     }
 
     loadDeck();
-  }, [deckId]);  // Dependency array ensures this effect runs when deckId changes
+  }, [deckId]); 
 
   const handleDelete = async () => {
     if (window.confirm("Delete this deck?\n\nYou will not be able to recover it.")) {
       try {
         await deleteDeck(deckId);
-        history.push('/'); // Navigate back to the home screen
+        history.push('/');
       } catch (error) {
         console.error('Failed to delete deck:', error);
       }

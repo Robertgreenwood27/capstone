@@ -1,8 +1,8 @@
 // Home/index.js
 import React, { useEffect, useState } from 'react';
 import { listDecks, deleteDeck } from '../../utils/api/index';
-
 import DeckList from './DeckList';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [decks, setDecks] = useState([]);
@@ -39,11 +39,11 @@ function Home() {
 
   return (
     <div>
-      <a href='decks/CreateDeck'>
+      <Link to="/decks/new">
         <button className='btn btn-info'>
           <span className="oi oi-plus"></span> Create Deck
         </button>
-      </a>
+      </Link>
       <br /><br />
       {decks.length > 0 && 
       decks.map((deck) => (

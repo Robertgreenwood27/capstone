@@ -104,8 +104,6 @@ body {
     100% { transform: scale(1); }
   }
   
-  .btn:focus {
-    animation: pulse 1s infinite;
-  }
+
   
   
