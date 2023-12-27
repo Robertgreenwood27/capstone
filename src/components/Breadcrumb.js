@@ -6,7 +6,7 @@ const Breadcrumb = ({ deck, current, cardNumber }) => {
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
-          <Link to="/">Home</Link>
+          <Link to="/"><span className="oi oi-home"></span> Home</Link>
         </li>
         {deck && (
           <li className="breadcrumb-item">
