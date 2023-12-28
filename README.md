@@ -11,7 +11,7 @@ Project Flash-O-Matic is a React application designed for creating and studying 
 
 ## Setup and Installation
 To set up the project locally:
-1. Clone the repository: `git clone [repo-link]`
+1. Clone the repository: `git clone https://github.com/Robertgreenwood27/capstone`
 2. Install dependencies: `npm install`
 3. Start the application: `npm start`
 
