@@ -25,8 +25,8 @@ const AddCard = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         await createCard(deckId, card);
-        setCard({ Front: '', Back: '' }); // Reset the card form
-        history.push(`/decks/${deckId}`); // Redirect to the deck view
+        setCard({ Front: '', Back: '' });
+        history.push(`/decks/${deckId}`);
     };
 
     const handleCancel = () => history.push(`/decks/${deckId}`);
