@@ -1,6 +1,7 @@
 // DeckForm.js
 import React from 'react';
 
+// This component renders the form for creating or editing a deck
 const DeckForm = ({ deck, onChange, onSubmit, onCancel }) => {
     return (
         <form onSubmit={(event) => onSubmit(deck, event)}>

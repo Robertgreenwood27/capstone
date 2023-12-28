@@ -5,15 +5,17 @@ import { createDeck } from '../../utils/api/index';
 import Breadcrumb from '../../components/Breadcrumb';
 import DeckForm from '../../components/DeckForm'; 
 
-
+// this component is very similar to EditDeck, but it does not fetch the deck data. it only creates a new deck.
 const CreateDeck = () => {
     const history = useHistory();
     const [deck, setDeck] = useState({ name: '', description: '' });
 
+    // Update the deck state when the form fields change
     const handleChange = ({ target }) => {
         setDeck({ ...deck, [target.name]: target.value });
     };
 
+    // this function creates the new deck when the form is submitted
     const handleSubmit = async (deckData, event) => {
         event.preventDefault();
         const newDeck = await createDeck(deckData);
@@ -21,7 +23,7 @@ const CreateDeck = () => {
     };
 
     const handleCancel = () => {
-        history.push('/');
+        history.push('/'); // Navigate back to the Home screen
     };
 
     return (

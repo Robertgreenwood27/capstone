@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// This component renders a single deck in the list of decks
 const DeckList = ({ deck, onDeleteDeck, cardCount }) => {
 
 

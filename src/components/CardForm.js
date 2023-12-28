@@ -1,8 +1,14 @@
 import React from 'react';
 
-const CardForm = ({ card, onChange, onSubmit, onCancel }) => {
+// This component renders the form for creating or editing a card
+const CardForm = ({ card, onChange, onSave, onDone, onCancel, isEditMode = false }) => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onSave(event); // Pass the event object to the onSave handler
+    };
+
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="front">Front</label>
                 <textarea
@@ -25,8 +31,17 @@ const CardForm = ({ card, onChange, onSubmit, onCancel }) => {
                     value={card.back}
                 ></textarea>
             </div>
-            <button type="button" className="btn btn-secondary mr-2" onClick={onCancel}>Cancel</button>
-            <button type="submit" className="btn btn-primary">Save</button>
+            {isEditMode ? (
+                <div>
+                    <button type="button" className="btn btn-secondary mr-2" onClick={onCancel}>Cancel</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </div>
+            ) : (
+                <div>
+                    <button type="button" className="btn btn-secondary mr-2" onClick={onDone}>Done</button>
+                    <button type="submit" className="btn btn-primary">Save</button>
+                </div>
+            )}
         </form>
     );
 };

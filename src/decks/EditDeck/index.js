@@ -4,11 +4,13 @@ import { readDeck, updateDeck } from '../../utils/api/index';
 import Breadcrumb from '../../components/Breadcrumb';
 import DeckForm from '../../components/DeckForm'; 
 
+// this component is very similar to AddDeck, but it fetches the deck data and populates the form fields with the deck data
 const EditDeck = () => {
     const { deckId } = useParams();
     const history = useHistory();
     const [deck, setDeck] = useState({ name: '', description: '' });
 
+    // this useEffect hook fetches the deck data and sets the deck state
     useEffect(() => {
         const fetchDeck = async () => {
             try {
@@ -20,12 +22,14 @@ const EditDeck = () => {
         };
 
         fetchDeck();
-    }, [deckId]);
+    }, [deckId]); // this will only run when the deckId changes
 
+    // Update the deck state when the form fields change
     const handleChange = ({ target }) => {
         setDeck({ ...deck, [target.name]: target.value });
     };
 
+    // this function updates the deck data when the form is submitted
     const handleSubmit = async (deckData, event) => {
         event.preventDefault();
         await updateDeck(deckData);
@@ -33,7 +37,7 @@ const EditDeck = () => {
     };
 
     const handleCancel = () => {
-        history.push(`/decks/${deckId}`);
+        history.push(`/decks/${deckId}`); // Navigate back to the Deck screen
     };
 
     return (
